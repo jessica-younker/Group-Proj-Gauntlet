@@ -1,10 +1,14 @@
 "use strict";
 
+
 console.log("weapons.js linked");
 
 var Tools = {};
 
 Tools.Weapon = function() {
+
+var Weapon = function() {
+
   this.name = "bare hands";
   this.damage = 1;
   this.hands = 2;

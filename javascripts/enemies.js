@@ -1,5 +1,6 @@
 "use strict";
 
+
 console.log("enemies.js linked");
 
  var GuildHall = require("./classes.js"),
@@ -7,6 +8,9 @@ console.log("enemies.js linked");
   
 
 Combatants.Orc = function() {
+
+Gauntlet.Combatants.Orc = function() {
+
   this.health = this.health + 20;
   this.species = "Orc";
   this.allowedClasses = ["Warrior", "Berserker", "Shaman"];

@@ -133,7 +133,7 @@ GuildHall.Stealth = function() {
   this.strengthBonus = this.strengthBonus + 5;
   this.intelligenceBonus = this.intelligenceBonus + 10;
 };
-GuildHall.Stealth.prototype = new Gauntlet.GuildHall.PlayerClass();
+GuildHall.Stealth.prototype = new GuildHall.PlayerClass();
 
 
 GuildHall.Thief = function() {
@@ -142,7 +142,7 @@ GuildHall.Thief = function() {
   this.strengthBonus = this.strengthBonus + 50;
   this.intelligenceBonus = this.intelligenceBonus + 50;
 };
-GuildHall.Thief.prototype = new Gauntlet.GuildHall.Stealth();
+GuildHall.Thief.prototype = new GuildHall.Stealth();
 
 
 GuildHall.Ninja = function() {
@@ -151,7 +151,7 @@ GuildHall.Ninja = function() {
   this.strengthBonus = this.strengthBonus + 15;
   this.intelligenceBonus = this.intelligenceBonus + 40;
 };
-GuildHall.Ninja.prototype = new Gauntlet.GuildHall.Stealth();
+GuildHall.Ninja.prototype = new GuildHall.Stealth();
 
 
 GuildHall.Assassin = function() {
@@ -160,7 +160,7 @@ GuildHall.Assassin = function() {
   this.strengthBonus = this.strengthBonus + 10;
   this.intelligenceBonus = this.intelligenceBonus + 80;
 };
-GuildHall.Assassin.prototype = new Gauntlet.GuildHall.Stealth();
+GuildHall.Assassin.prototype = new GuildHall.Stealth();
 
 module.exports = GuildHall;
 

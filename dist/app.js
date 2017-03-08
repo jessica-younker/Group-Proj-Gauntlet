@@ -1,31 +1,35 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-/*
-  Test code to generate a human player and an orc player
- */
 console.log("app.js linked");
 
 let Tools = require("./weapons.js"),
   Combatants = require("./player.js"),
-  SpellBook = require("./spells.js");
+  SpellBook = require("./spells.js"),
+  GuildHall = require('./classes.js'),
+  Enemies = require('./enemies.js');
 
-var warrior = new Combatants.Human();
-warrior.setWeapon(new Tools.WarAxe());
-warrior.generateClass();  // This will be used for "Surprise me" option
-console.log(warrior.toString());
+/*
+  Test code to generate a human player and an orc player
+ */
+// var orc = new Enemies.Orc();
+// orc.generateClass();
+// orc.setWeapon(new Tools.BroadSword());
+// console.log(orc.toString());
 
-var orc = new Combatants.Orc();
-orc.generateClass();
-orc.setWeapon(new Tools.BroadSword());
-console.log(orc.toString());
-
+// var warrior = new Combatants.Human();
+// warrior.setWeapon(new Tools.WarAxe());
+// warrior.generateClass();  // This will be used for "Surprise me" option
+// console.log(warrior.toString());
 /*
   Test code to generate a spell
  */
-var spell = new SpellBook.Sphere();
-console.log("spell: ", spell.toString());
+// var spell = new SpellBook.Sphere();
+// console.log("spell: ", spell.toString());
 
+var playerName;
+var classChoosen;
+var weaponChoosen;
 
 $(document).ready(function() {
   /*
@@ -39,18 +43,128 @@ $(document).ready(function() {
    */
   $(".card__link").click(function(e) {
     var nextCard = $(this).attr("next");
-    var moveAlong = false;
 
-    switch (nextCard) {
-      case "card--class":
+    var moveAlong = false;
+  
+
+    // we should not allow a blank name here as initial view is asking for name
+    playerName = $("#player-name").val();
+    // console.log('Hello ', playerName);
+
+    switch (nextCard) { // next card is set to next attribute on href
+      case "card--class": // first ahref next -- this is class of ahref and SECTION
+                          // this shows which section we're on
+
         moveAlong = ($("#player-name").val() !== "");
+        console.log(moveAlong);
+
+        $('.class__link').click(function(e) {
+          // Set the class here
+          classChoosen = $(this).attr('id');
+          classChoosen = classChoosen.toString();
+          console.log('You choose the class: ', classChoosen);
+        });
+
         break;
+
       case "card--weapon":
+        // now pick a weapon
+        console.log('You are a ', classChoosen);
         moveAlong = ($("#player-name").val() !== "");
+
+        $('.weapon__link').click(function(e) {
+          // Set the weapon here
+          weaponChoosen = $(this).attr('id');
+          weaponChoosen = weaponChoosen.toString();
+
+          console.log('You choose the weapon: ', weaponChoosen);
+        });
+
         break;
+
+      case "card--battleground":
+
+        console.log(weaponChoosen, classChoosen);
+        moveAlong = ($("#player-name").val() !== "");
+        console.log('we should start a battle here');
+
+        startGame();
+
+      break;
+
+    }
+
+    function startGame () {
+/*     var playerName; var classChoosen; var weaponChoosen;
+      we need to use this variable to set what we have
+  Classes:
+    Warrior, Valkyrie, Berserker, Monk, Wizard, Sorcerer, Conjurer 
+    Thief, Ninja, Assassin
+  Weapons:
+    Dagger, BroadSword, WarAxe
+    */
+
+      /* this works but we should set the props equal to the
+        values we set above */
+
+      console.log('Class Picked Is: ', classChoosen);
+
+      var newPlayer;
+      // should create default player class here, do we start with class?
+
+/*
+ 
+      if (classChoosen === 'Warrior') {
+        newPlayer =
+        newPlayer.class =
+      } else if  (classChoosen === 'Valkyrie') {
+        newPlayer = 
+        newPlayer.class =
+      } else if  (classChoosen === 'Berserker') {
+        newPlayer = 
+        newPlayer.class =    
+      } else if  (classChoosen === 'Monk') {
+        newPlayer = 
+        newPlayer.class = 
+      } else if  (classChoosen === 'Wizard') {
+        newPlayer = 
+        newPlayer.class = 
+      } else if  (classChoosen === 'Sorcerer') {
+        newPlayer = 
+        newPlayer.class = 
+      } else if  (classChoosen === 'Conjurer') {
+        newPlayer = 
+        newPlayer.class = 
+      } else if  (classChoosen === 'Thief') {
+        newPlayer = 
+        newPlayer.class =
+      } else if  (classChoosen === 'Ninja') {
+        newPlayer = 
+        newPlayer.class =
+      } else if  (classChoosen === 'Assassin') {
+        newPlayer = 
+        newPlayer.class =
+      } else {
+        console.log('what is going on? ');
+      }
+*/
+      var playerWeapon = 'anything at the moment';
+
+      var warrior = new Combatants.Human();
+      warrior.playerName = playerName;
+
+      // warrior.setWeapon(new WarAxe());
+      // warrior.generateClass();  // This will be used for "Surprise me" option
+      warrior.weapon = playerWeapon;
+      warrior.class = new GuildHall.Warrior();
+
+      console.log(warrior.toString());
+      console.log(warrior);
+
     }
 
     if (moveAlong) {
+      console.log('where are we: ', $(this));
       $(".card").hide();
       $("." + nextCard).show();
     }
@@ -66,7 +180,7 @@ $(document).ready(function() {
   });
 
 });
-},{"./player.js":4,"./spells.js":5,"./weapons.js":6}],2:[function(require,module,exports){
+},{"./classes.js":2,"./enemies.js":3,"./player.js":4,"./spells.js":5,"./weapons.js":6}],2:[function(require,module,exports){
 "use strict";
 /*
   TODO: Modularize this code with IIFE or Browserify
@@ -96,9 +210,11 @@ GuildHall.PlayerClass = function() {
       - Berserker
       - Monk
  */
+
 GuildHall.Fighter = function() {
   this.healthBonus = 20;
   this.strengthBonus = 10;
+  this.intelligenceBonus = this.intelligenceBonus - 10;
 };
 GuildHall.Fighter.prototype = new GuildHall.PlayerClass();
 
@@ -194,6 +310,40 @@ GuildHall.Sorcerer.prototype = new GuildHall.Mage();
       - Ninja
       - Assassin
  */
+GuildHall.Stealth = function() {
+  this.name = "Stealth";
+  this.healthBonus = this.healthBonus + 15;
+  this.strengthBonus = this.strengthBonus + 5;
+  this.intelligenceBonus = this.intelligenceBonus + 10;
+};
+GuildHall.Stealth.prototype = new GuildHall.PlayerClass();
+
+
+GuildHall.Thief = function() {
+  this.name = "Thief";
+  this.healthBonus = this.healthBonus + 50;
+  this.strengthBonus = this.strengthBonus + 50;
+  this.intelligenceBonus = this.intelligenceBonus + 50;
+};
+GuildHall.Thief.prototype = new GuildHall.Stealth();
+
+
+GuildHall.Ninja = function() {
+  this.name = "Ninja";
+  this.healthBonus = this.healthBonus + 5;
+  this.strengthBonus = this.strengthBonus + 15;
+  this.intelligenceBonus = this.intelligenceBonus + 40;
+};
+GuildHall.Ninja.prototype = new GuildHall.Stealth();
+
+
+GuildHall.Assassin = function() {
+  this.name = "Assassin";
+  this.healthBonus = this.healthBonus - 15;
+  this.strengthBonus = this.strengthBonus + 10;
+  this.intelligenceBonus = this.intelligenceBonus + 80;
+};
+GuildHall.Assassin.prototype = new GuildHall.Stealth();
 
 module.exports = GuildHall;
 
@@ -204,13 +354,16 @@ module.exports = GuildHall;
 },{}],3:[function(require,module,exports){
 "use strict";
 
+
 console.log("enemies.js linked");
 
  var GuildHall = require("./classes.js"),
-  Combatants = require("./player.js");
-  
+     Combatants = require("./player.js");
 
-Combatants.Orc = function() {
+let Enemies = {};
+
+Enemies.Orc = function() {
+
   this.health = this.health + 20;
   this.species = "Orc";
   this.allowedClasses = ["Warrior", "Berserker", "Shaman"];
@@ -228,9 +381,9 @@ Combatants.Orc = function() {
   };
 };
 
-Combatants.Orc.prototype = new Combatants.Monster();
+Enemies.Orc.prototype = new Combatants.Monster();
 
-module.exports = Combatants;
+module.exports = Enemies;
 },{"./classes.js":2,"./player.js":4}],4:[function(require,module,exports){
 "use strict";
 /*
@@ -315,7 +468,6 @@ Combatants.Human = function() {
 };
 Combatants.Human.prototype = new Combatants.Player();
 
-
 /*
   Define the base properties for a monster in a 
   constructor function.
@@ -325,7 +477,6 @@ Combatants.Monster = function() {
   this.intelligence = this.intelligence -20;
   this.strength = this.strength + 30;
 };
-
 Combatants.Monster.prototype = new Combatants.Player();
 
 module.exports = Combatants;
@@ -371,11 +522,13 @@ module.exports = SpellBook;
 },{}],6:[function(require,module,exports){
 "use strict";
 
+
 console.log("weapons.js linked");
 
 var Tools = {};
 
 Tools.Weapon = function() {
+
   this.name = "bare hands";
   this.damage = 1;
   this.hands = 2;

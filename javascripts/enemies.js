@@ -4,12 +4,11 @@
 console.log("enemies.js linked");
 
  var GuildHall = require("./classes.js"),
-  Combatants = require("./player.js");
-  
+     Combatants = require("./player.js");
 
-Combatants.Orc = function() {
+let Enemies = {};
 
-Gauntlet.Combatants.Orc = function() {
+Enemies.Orc = function() {
 
   this.health = this.health + 20;
   this.species = "Orc";
@@ -28,6 +27,6 @@ Gauntlet.Combatants.Orc = function() {
   };
 };
 
-Combatants.Orc.prototype = new Combatants.Monster();
+Enemies.Orc.prototype = new Combatants.Monster();
 
-module.exports = Combatants;
+module.exports = Enemies;

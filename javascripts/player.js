@@ -81,7 +81,6 @@ Combatants.Human = function() {
 };
 Combatants.Human.prototype = new Combatants.Player();
 
-
 /*
   Define the base properties for a monster in a 
   constructor function.
@@ -91,7 +90,6 @@ Combatants.Monster = function() {
   this.intelligence = this.intelligence -20;
   this.strength = this.strength + 30;
 };
-
 Combatants.Monster.prototype = new Combatants.Player();
 
 module.exports = Combatants;

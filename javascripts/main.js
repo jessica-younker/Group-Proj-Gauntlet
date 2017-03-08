@@ -139,6 +139,14 @@ function startGame () {
 
 } /* end start game */
 
+function showPlayerStats() {
+  var outputPlayerStats = document.getElementsByClassName("playerStats");
+}
+
+function showEnemyStats() {
+  var outputEnemyStats = document.getElementsByClassName("enemyStats");
+}
+
 /*
   Test code to generate a human player and an orc player
  */

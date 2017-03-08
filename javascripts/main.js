@@ -178,4 +178,15 @@ $(document).ready(function() {
     $("." + previousCard).show();
   });
 
+
+  function showPlayerStats() {
+    var outputPlayerStats = document.getElementsByClassName("playerStats");
+  }
+
+  function showEnemyStats() {
+    var outputEnemyStats = document.getElementsByClassName("enemyStats");
+  }
+
+
 });
+

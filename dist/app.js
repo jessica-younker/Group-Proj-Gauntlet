@@ -1,5 +1,209 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
+/*
+  TODO: Modularize this code with IIFE or Browserify
+ */
+console.log("classes.js linked");
+
+var GuildHall = {};
+/*
+  Base function for a player, or enemy, class (profession)
+ */
+GuildHall.PlayerClass = function() {
+  this.name = "Beggar";
+  this.healthBonus = 0;
+  this.strengthBonus = 0;
+  this.intelligenceBonus = 0;
+  this.magical = false;
+
+  this.toString = function() {
+    return this.name;
+  };
+};
+
+/*
+    FIGHTER CLASSES
+      - Warrior
+      - Valkyrie
+      - Berserker
+      - Monk
+ */
+
+GuildHall.Fighter = function() {
+  this.healthBonus = 20;
+  this.strengthBonus = 10;
+  this.intelligenceBonus = this.intelligenceBonus - 10;
+};
+GuildHall.Fighter.prototype = new GuildHall.PlayerClass();
+
+
+GuildHall.Warrior = function() {
+  this.name = "Warrior";
+  this.healthBonus = this.healthBonus + 25;
+  this.strengthBonus = this.strengthBonus + 30;
+};
+GuildHall.Warrior.prototype = new GuildHall.Fighter();
+
+
+GuildHall.Valkyrie = function() {
+  this.name = "Valkyrie";
+  this.healthBonus = this.healthBonus + 20;
+  this.strengthBonus = this.strengthBonus + 10;
+};
+GuildHall.Valkyrie.prototype = new GuildHall.Fighter();
+
+
+GuildHall.Berserker = function() {
+  this.name = "Berserker";
+  this.healthBonus = this.healthBonus + 35;
+  this.strengthBonus = this.strengthBonus + 20;
+};
+GuildHall.Berserker.prototype = new GuildHall.Fighter();
+
+
+GuildHall.Monk = function() {
+  this.name = "Monk";
+  this.healthBonus = this.healthBonus + 10;
+  this.strengthBonus = this.strengthBonus + 40;
+};
+GuildHall.Monk.prototype = new GuildHall.Fighter();
+
+
+/*
+    MAGICAL CLASSES
+      - Shaman
+      - Wizard
+      - Conujurer
+      - Sorcerer
+ */
+GuildHall.Mage = function() {
+  this.name = "Mage";
+  this.magical = true;
+  this.healthBonus = this.healthBonus - 10;
+  this.strengthBonus = this.strengthBonus - 20;
+  this.intelligenceBonus = this.intelligenceBonus + 20;
+};
+GuildHall.Mage.prototype = new GuildHall.PlayerClass();
+
+
+GuildHall.Shaman = function() {
+  this.name = "Shaman";
+  this.healthBonus = this.healthBonus + 5;
+  this.strengthBonus = this.strengthBonus - 10;
+  this.intelligenceBonus = this.intelligenceBonus + 20;
+};
+GuildHall.Shaman.prototype = new GuildHall.Mage();
+
+
+GuildHall.Wizard = function() {
+  this.name = "Wizard";
+  this.healthBonus = this.healthBonus - 15;
+  this.strengthBonus = this.strengthBonus - 25;
+  this.intelligenceBonus = this.intelligenceBonus + 40;
+};
+GuildHall.Wizard.prototype = new GuildHall.Mage();
+
+
+GuildHall.Conjurer = function() {
+  this.name = "Conjurer";
+  this.strengthBonus = this.strengthBonus - 10;
+  this.intelligenceBonus = this.intelligenceBonus + 10;
+};
+GuildHall.Conjurer.prototype = new GuildHall.Mage();
+
+
+GuildHall.Sorcerer = function() {
+  this.name = "Sorcerer";
+  this.healthBonus = this.healthBonus - 5;
+  this.strengthBonus = this.strengthBonus - 20;
+  this.intelligenceBonus = this.intelligenceBonus + 30;
+};
+GuildHall.Sorcerer.prototype = new GuildHall.Mage();
+
+
+
+/*
+    STEALTH CLASSES
+      - Thief
+      - Ninja
+      - Assassin
+ */
+GuildHall.Stealth = function() {
+  this.name = "Stealth";
+  this.healthBonus = this.healthBonus + 15;
+  this.strengthBonus = this.strengthBonus + 5;
+  this.intelligenceBonus = this.intelligenceBonus + 10;
+};
+GuildHall.Stealth.prototype = new GuildHall.PlayerClass();
+
+
+GuildHall.Thief = function() {
+  this.name = "Thief";
+  this.healthBonus = this.healthBonus + 50;
+  this.strengthBonus = this.strengthBonus + 50;
+  this.intelligenceBonus = this.intelligenceBonus + 50;
+};
+GuildHall.Thief.prototype = new GuildHall.Stealth();
+
+
+GuildHall.Ninja = function() {
+  this.name = "Ninja";
+  this.healthBonus = this.healthBonus + 5;
+  this.strengthBonus = this.strengthBonus + 15;
+  this.intelligenceBonus = this.intelligenceBonus + 40;
+};
+GuildHall.Ninja.prototype = new GuildHall.Stealth();
+
+
+GuildHall.Assassin = function() {
+  this.name = "Assassin";
+  this.healthBonus = this.healthBonus - 15;
+  this.strengthBonus = this.strengthBonus + 10;
+  this.intelligenceBonus = this.intelligenceBonus + 80;
+};
+GuildHall.Assassin.prototype = new GuildHall.Stealth();
+
+module.exports = GuildHall;
+
+
+
+
+
+},{}],2:[function(require,module,exports){
+"use strict";
+
+
+console.log("enemies.js linked");
+
+ var GuildHall = require("./classes.js"),
+     Combatants = require("./player.js");
+
+let Enemies = {};
+
+Enemies.Orc = function() {
+
+  this.health = this.health + 20;
+  this.species = "Orc";
+  this.allowedClasses = ["Warrior", "Berserker", "Shaman"];
+
+  this.generateClass = function() {
+    // Get a random index from the allowed classes array
+    var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
+
+    // Get the string at the index
+    var randomClass = this.allowedClasses[random];
+
+    // Composes the corresponding player class into the player object
+    this.class = new GuildHall[randomClass]();
+    return this.class;
+  };
+};
+
+Enemies.Orc.prototype = new Combatants.Monster();
+
+module.exports = Enemies;
+},{"./classes.js":1,"./player.js":4}],3:[function(require,module,exports){
+"use strict";
 
 console.log("app.js linked");
 
@@ -179,212 +383,20 @@ $(document).ready(function() {
     $("." + previousCard).show();
   });
 
+
+  function showPlayerStats() {
+    var outputPlayerStats = document.getElementsByClassName("playerStats");
+  }
+
+  function showEnemyStats() {
+    var outputEnemyStats = document.getElementsByClassName("enemyStats");
+  }
+
+
 });
-},{"./classes.js":2,"./enemies.js":3,"./player.js":4,"./spells.js":5,"./weapons.js":6}],2:[function(require,module,exports){
-"use strict";
-/*
-  TODO: Modularize this code with IIFE or Browserify
- */
-console.log("classes.js linked");
-
-var GuildHall = {};
-/*
-  Base function for a player, or enemy, class (profession)
- */
-GuildHall.PlayerClass = function() {
-  this.name = "Beggar";
-  this.healthBonus = 0;
-  this.strengthBonus = 0;
-  this.intelligenceBonus = 0;
-  this.magical = false;
-
-  this.toString = function() {
-    return this.name;
-  };
-};
-
-/*
-    FIGHTER CLASSES
-      - Warrior
-      - Valkyrie
-      - Berserker
-      - Monk
- */
-
-GuildHall.Fighter = function() {
-  this.healthBonus = 20;
-  this.strengthBonus = 10;
-  this.intelligenceBonus = this.intelligenceBonus - 10;
-};
-GuildHall.Fighter.prototype = new GuildHall.PlayerClass();
 
 
-GuildHall.Warrior = function() {
-  this.name = "Warrior";
-  this.healthBonus = this.healthBonus + 25;
-  this.strengthBonus = this.strengthBonus + 30;
-};
-GuildHall.Warrior.prototype = new GuildHall.Fighter();
-
-
-GuildHall.Valkyrie = function() {
-  this.name = "Valkyrie";
-  this.healthBonus = this.healthBonus + 20;
-  this.strengthBonus = this.strengthBonus + 10;
-};
-GuildHall.Valkyrie.prototype = new GuildHall.Fighter();
-
-
-GuildHall.Berserker = function() {
-  this.name = "Berserker";
-  this.healthBonus = this.healthBonus + 35;
-  this.strengthBonus = this.strengthBonus + 20;
-};
-GuildHall.Berserker.prototype = new GuildHall.Fighter();
-
-
-GuildHall.Monk = function() {
-  this.name = "Monk";
-  this.healthBonus = this.healthBonus + 10;
-  this.strengthBonus = this.strengthBonus + 40;
-};
-GuildHall.Monk.prototype = new GuildHall.Fighter();
-
-
-/*
-    MAGICAL CLASSES
-      - Shaman
-      - Wizard
-      - Conujurer
-      - Sorcerer
- */
-GuildHall.Mage = function() {
-  this.name = "Mage";
-  this.magical = true;
-  this.healthBonus = this.healthBonus - 10;
-  this.strengthBonus = this.strengthBonus - 20;
-  this.intelligenceBonus = this.intelligenceBonus + 20;
-};
-GuildHall.Mage.prototype = new GuildHall.PlayerClass();
-
-
-GuildHall.Shaman = function() {
-  this.name = "Shaman";
-  this.healthBonus = this.healthBonus + 5;
-  this.strengthBonus = this.strengthBonus - 10;
-  this.intelligenceBonus = this.intelligenceBonus + 20;
-};
-GuildHall.Shaman.prototype = new GuildHall.Mage();
-
-
-GuildHall.Wizard = function() {
-  this.name = "Wizard";
-  this.healthBonus = this.healthBonus - 15;
-  this.strengthBonus = this.strengthBonus - 25;
-  this.intelligenceBonus = this.intelligenceBonus + 40;
-};
-GuildHall.Wizard.prototype = new GuildHall.Mage();
-
-
-GuildHall.Conjurer = function() {
-  this.name = "Conjurer";
-  this.strengthBonus = this.strengthBonus - 10;
-  this.intelligenceBonus = this.intelligenceBonus + 10;
-};
-GuildHall.Conjurer.prototype = new GuildHall.Mage();
-
-
-GuildHall.Sorcerer = function() {
-  this.name = "Sorcerer";
-  this.healthBonus = this.healthBonus - 5;
-  this.strengthBonus = this.strengthBonus - 20;
-  this.intelligenceBonus = this.intelligenceBonus + 30;
-};
-GuildHall.Sorcerer.prototype = new GuildHall.Mage();
-
-
-
-/*
-    STEALTH CLASSES
-      - Thief
-      - Ninja
-      - Assassin
- */
-GuildHall.Stealth = function() {
-  this.name = "Stealth";
-  this.healthBonus = this.healthBonus + 15;
-  this.strengthBonus = this.strengthBonus + 5;
-  this.intelligenceBonus = this.intelligenceBonus + 10;
-};
-GuildHall.Stealth.prototype = new GuildHall.PlayerClass();
-
-
-GuildHall.Thief = function() {
-  this.name = "Thief";
-  this.healthBonus = this.healthBonus + 50;
-  this.strengthBonus = this.strengthBonus + 50;
-  this.intelligenceBonus = this.intelligenceBonus + 50;
-};
-GuildHall.Thief.prototype = new GuildHall.Stealth();
-
-
-GuildHall.Ninja = function() {
-  this.name = "Ninja";
-  this.healthBonus = this.healthBonus + 5;
-  this.strengthBonus = this.strengthBonus + 15;
-  this.intelligenceBonus = this.intelligenceBonus + 40;
-};
-GuildHall.Ninja.prototype = new GuildHall.Stealth();
-
-
-GuildHall.Assassin = function() {
-  this.name = "Assassin";
-  this.healthBonus = this.healthBonus - 15;
-  this.strengthBonus = this.strengthBonus + 10;
-  this.intelligenceBonus = this.intelligenceBonus + 80;
-};
-GuildHall.Assassin.prototype = new GuildHall.Stealth();
-
-module.exports = GuildHall;
-
-
-
-
-
-},{}],3:[function(require,module,exports){
-"use strict";
-
-
-console.log("enemies.js linked");
-
- var GuildHall = require("./classes.js"),
-     Combatants = require("./player.js");
-
-let Enemies = {};
-
-Enemies.Orc = function() {
-
-  this.health = this.health + 20;
-  this.species = "Orc";
-  this.allowedClasses = ["Warrior", "Berserker", "Shaman"];
-
-  this.generateClass = function() {
-    // Get a random index from the allowed classes array
-    var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
-
-    // Get the string at the index
-    var randomClass = this.allowedClasses[random];
-
-    // Composes the corresponding player class into the player object
-    this.class = new GuildHall[randomClass]();
-    return this.class;
-  };
-};
-
-Enemies.Orc.prototype = new Combatants.Monster();
-
-module.exports = Enemies;
-},{"./classes.js":2,"./player.js":4}],4:[function(require,module,exports){
+},{"./classes.js":1,"./enemies.js":2,"./player.js":4,"./spells.js":5,"./weapons.js":6}],4:[function(require,module,exports){
 "use strict";
 /*
   TODO: Modularize this code with IIFE or Browserify
@@ -435,7 +447,7 @@ Combatants.Player.prototype.setWeapon = function(newWeapon) {
   this.weapon = newWeapon;
 };
 
-Combatants.Player.prototype.generateClass = function() {
+Combatants.Player.prototype.generateClass = function() { 
   // Get a random index from the allowed classes array
   var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
 
@@ -482,7 +494,7 @@ Combatants.Monster.prototype = new Combatants.Player();
 module.exports = Combatants;
 
 
-},{"./classes.js":2}],5:[function(require,module,exports){
+},{"./classes.js":1}],5:[function(require,module,exports){
 "use strict";
 /*
   TODO: Modularize this code with IIFE or Browserify

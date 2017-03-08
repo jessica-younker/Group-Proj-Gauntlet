@@ -5,6 +5,8 @@ body {
   font-size: 3em;
 }
 
+
+
 .field {
   margin: 20px 0 0 0;
 }
@@ -15,8 +17,6 @@ body {
   text-align: center;
   min-width: 500px;
 }
-
-
 
 /*
   Section styles
@@ -103,3 +103,37 @@ body {
   padding: 0 50px 0 20px;
   border-radius: 0 5px 5px 0;
 }
+
+
+
+/*
+  Battleground styles
+ */
+
+.battlegroundHeader {
+  text-align: center;
+}
+
+.statsContainer {
+  max-width: 100%;
+  text-align: center;
+  border: solid .20em;
+  padding: .5em;
+}
+
+.playerStats {
+  max-width: 45%;
+  border: dotted .10em;
+  margin: .25em;
+  padding: .25em;
+}
+
+.enemyStats {
+  max-width: 45%;
+  border: dotted .10em;
+  margin: .25em;
+  padding: .25em;
+}
+
+
+

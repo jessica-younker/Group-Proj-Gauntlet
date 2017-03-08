@@ -15,7 +15,7 @@ Tools.Weapon = function() {
     return this.name;
   };
 };
-
+ 
 Tools.Dagger = function() {        
   this.name = "dagger";
   this.damage = 4;

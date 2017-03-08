@@ -38,6 +38,7 @@ $(document).ready(function() {
           // Set the class here
           classChoosen = $(this).attr('id');
           console.log('card--class: You choose the class: ', classChoosen);
+
         });
 
         break;
@@ -134,12 +135,6 @@ function startGame () {
       console.log( newPlayer );
 
 } /* end start game */
-
-
-
-
-
-
 
 /*
   Test code to generate a human player and an orc player

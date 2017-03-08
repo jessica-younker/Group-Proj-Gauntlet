@@ -8,9 +8,7 @@ let Tools = require("./weapons.js"),
   GuildHall = require('./classes.js'),
   Enemies = require('./enemies.js');
 
-var playerName;
-var classChoosen;
-var weaponChoosen;
+var playerName, classChoosen, weaponChoosen;
 
 $(document).ready(function() {
   /*
@@ -29,6 +27,7 @@ $(document).ready(function() {
 
     playerName = $("#player-name").val();
 
+    /* start loop */
     switch (nextCard) {
 
       case "card--class":
@@ -61,11 +60,11 @@ $(document).ready(function() {
         console.log('Class Choosen: ', classChoosen, 'and Weapon Choosen: ', weaponChoosen);
         console.log('Now calling startGame()');
 
-        startGame();
+        startGame(); /* - this should be called outside the loop... but for now...
+                        we should switch out of this and go to a new portion of the page */
 
         break;
-
-    }
+    } // end switch loop
 
     if (moveAlong) {
       $(".card").hide();
@@ -87,8 +86,8 @@ $(document).ready(function() {
 
 function startGame () {
 
-      console.log('startGame. Class Picked Is: ', classChoosen);
-      console.log('startGame. Weapon Picked Is: ', weaponChoosen);
+      console.log('startGame called. Class Picked Is: ', classChoosen);
+      console.log('startGame called. Weapon Picked Is: ', weaponChoosen);
 
       var newPlayer = new Combatants.Human();
           newPlayer.playerName = playerName;
@@ -114,7 +113,9 @@ function startGame () {
       } else if  (classChoosen === 'Assassin') {
         newPlayer.class = new GuildHall.Assassin();
       } else {
-        console.log('what is going on? we need a class ');
+        console.log('no class??? ');
+        // we don't want to get null errors...
+        newPlayer.class = 'noClass';
       }
 
       console.log('startGame. Player Now has Class Attached: ', newPlayer);
@@ -127,12 +128,14 @@ function startGame () {
         newPlayer.setWeapon(new Tools.WarAxe());
       } else {
         console.log('No Weapon??? :( ');
+        newPlayer.weapon = 'noWeapon';
       }
 
       console.log('startGame. Player Now has Weapon Attached: ', newPlayer);
 
+      console.log('now what do we do? ');
+
       console.log( newPlayer.toString() );
-      console.log( newPlayer );
 
 } /* end start game */
 
@@ -153,3 +156,4 @@ function startGame () {
  */
 // var spell = new SpellBook.Sphere();
 // console.log("spell: ", spell.toString());
+// 

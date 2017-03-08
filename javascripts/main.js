@@ -91,7 +91,7 @@ function startGame () {
 
       var newPlayer = new Combatants.Human();
           newPlayer.playerName = playerName;
-
+// old code gone - for git
       if (classChoosen === 'Warrior') {
         newPlayer.class = new GuildHall.Warrior();
       } else if  (classChoosen === 'Valkyrie') {

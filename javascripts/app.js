@@ -2,21 +2,28 @@
 /*
   Test code to generate a human player and an orc player
  */
-var warrior = new Gauntlet.Combatants.Human();
-warrior.setWeapon(new WarAxe());
+console.log("app.js linked");
+
+let Tools = require("./weapons.js"),
+  Combatants = require("./player.js"),
+  SpellBook = require("./spells.js");
+
+var warrior = new Combatants.Human();
+warrior.setWeapon(new Tools.WarAxe());
 warrior.generateClass();  // This will be used for "Surprise me" option
 console.log(warrior.toString());
 
-var orc = new Gauntlet.Combatants.Orc();
+var orc = new Combatants.Orc();
 orc.generateClass();
-orc.setWeapon(new BroadSword());
+orc.setWeapon(new Tools.BroadSword());
 console.log(orc.toString());
 
 /*
   Test code to generate a spell
  */
-var spell = new Gauntlet.SpellBook.Sphere();
-// console.log("spell: ", spell.toString());
+
+var spell = new SpellBook.Sphere();
+console.log("spell: ", spell.toString());
 
 
 $(document).ready(function() {

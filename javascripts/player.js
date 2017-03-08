@@ -2,14 +2,17 @@
 /*
   TODO: Modularize this code with IIFE or Browserify
  */
-var Gauntlet = Gauntlet || {};
-Gauntlet.Combatants = {};
+console.log("player.js linked");
+
+var GuildHall = require("./classes.js");
+
+var Combatants = {};
 
 /*
   Define the base object for any player of Gauntlet,
   whether a human player or a monster.
  */
-Gauntlet.Combatants.Player = function(name) {
+Combatants.Player = function(name) {
   this.species = null;
   this.class = null;
   this.weapon = null;
@@ -41,11 +44,11 @@ Gauntlet.Combatants.Player = function(name) {
   };
 };
 
-Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
+Combatants.Player.prototype.setWeapon = function(newWeapon) {
   this.weapon = newWeapon;
 };
 
-Gauntlet.Combatants.Player.prototype.generateClass = function() {
+Combatants.Player.prototype.generateClass = function() {
   // Get a random index from the allowed classes array
   var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
 
@@ -53,7 +56,7 @@ Gauntlet.Combatants.Player.prototype.generateClass = function() {
   var randomClass = this.allowedClasses[random];
 
   // Composes the corresponding player class into the player object
-  this.class = new Gauntlet.GuildHall[randomClass]();
+  this.class = new GuildHall[randomClass]();
 
   // Add the health bonus
   this.health += this.class.healthBonus;
@@ -64,7 +67,7 @@ Gauntlet.Combatants.Player.prototype.generateClass = function() {
   Define the base properties for a human in a 
   constructor function.
  */
-Gauntlet.Combatants.Human = function() {
+Combatants.Human = function() {
   var randomSkin;
 
   this.species = "Human";
@@ -76,18 +79,20 @@ Gauntlet.Combatants.Human = function() {
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
 };
-Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
+Combatants.Human.prototype = new Combatants.Player();
 
 
 /*
   Define the base properties for a monster in a 
   constructor function.
  */
-Gauntlet.Combatants.Monster = function() {
+Combatants.Monster = function() {
   this.health = this.health - 30;
   this.intelligence = this.intelligence -20;
   this.strength = this.strength + 30;
 };
 
-Gauntlet.Combatants.Monster.prototype = new Gauntlet.Combatants.Player();
+Combatants.Monster.prototype = new Combatants.Player();
+
+module.exports = Combatants;
 

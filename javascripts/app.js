@@ -21,6 +21,7 @@ console.log(orc.toString());
 /*
   Test code to generate a spell
  */
+
 var spell = new SpellBook.Sphere();
 console.log("spell: ", spell.toString());
 

@@ -27,9 +27,11 @@ GuildHall.PlayerClass = function() {
       - Berserker
       - Monk
  */
+
 GuildHall.Fighter = function() {
   this.healthBonus = 20;
   this.strengthBonus = 10;
+  this.intelligenceBonus = this.intelligenceBonus - 10;
 };
 GuildHall.Fighter.prototype = new GuildHall.PlayerClass();
 
@@ -125,6 +127,40 @@ GuildHall.Sorcerer.prototype = new GuildHall.Mage();
       - Ninja
       - Assassin
  */
+GuildHall.Stealth = function() {
+  this.name = "Stealth";
+  this.healthBonus = this.healthBonus + 15;
+  this.strengthBonus = this.strengthBonus + 5;
+  this.intelligenceBonus = this.intelligenceBonus + 10;
+};
+GuildHall.Stealth.prototype = new Gauntlet.GuildHall.PlayerClass();
+
+
+GuildHall.Thief = function() {
+  this.name = "Thief";
+  this.healthBonus = this.healthBonus + 50;
+  this.strengthBonus = this.strengthBonus + 50;
+  this.intelligenceBonus = this.intelligenceBonus + 50;
+};
+GuildHall.Thief.prototype = new Gauntlet.GuildHall.Stealth();
+
+
+GuildHall.Ninja = function() {
+  this.name = "Ninja";
+  this.healthBonus = this.healthBonus + 5;
+  this.strengthBonus = this.strengthBonus + 15;
+  this.intelligenceBonus = this.intelligenceBonus + 40;
+};
+GuildHall.Ninja.prototype = new Gauntlet.GuildHall.Stealth();
+
+
+GuildHall.Assassin = function() {
+  this.name = "Assassin";
+  this.healthBonus = this.healthBonus - 15;
+  this.strengthBonus = this.strengthBonus + 10;
+  this.intelligenceBonus = this.intelligenceBonus + 80;
+};
+GuildHall.Assassin.prototype = new Gauntlet.GuildHall.Stealth();
 
 module.exports = GuildHall;
 

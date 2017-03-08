@@ -1,31 +1,38 @@
-var Weapon = function() {
+"use strict";
+
+console.log("weapons.js linked");
+
+var Tools = {};
+
+Tools.Weapon = function() {
   this.name = "bare hands";
   this.damage = 1;
   this.hands = 2;
 
   this.toString = function() {
     return this.name;
-  }
+  };
 };
 
-var Dagger = function() {
+Tools.Dagger = function() {        
   this.name = "dagger";
   this.damage = 4;
   this.hands = 1;
 };
-Dagger.prototype = new Weapon();
+Tools.Dagger.prototype = new Tools.Weapon();
 
-var BroadSword = function() {
+Tools.BroadSword = function() {
   this.name = "broad sword";
   this.damage = 14;
   this.hands = 2;
 };
-BroadSword.prototype = new Weapon();
+Tools.BroadSword.prototype = new Tools.Weapon();
 
-var WarAxe = function() {
+Tools.WarAxe = function() {
   this.name = "war axe";
   this.damage = 18;
   this.hands = 2;
 };
-WarAxe.prototype = new Weapon();
+Tools.WarAxe.prototype = new Tools.Weapon();
 
+module.exports = Tools;

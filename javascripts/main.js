@@ -10,7 +10,8 @@ let Tools = require("./weapons.js"),
     CreatePlayer = require('./createplayer.js'),
     StartCombat = require('./startcombat.js');
 
-let classChoosen, 
+let playerName,
+    classChoosen, 
     weaponChoosen,
     createdPlayer,
     createdEnemy;
@@ -25,8 +26,8 @@ $(".card__link").click( (e) => {
 
 function handleSetup (e) {
     var nextCard = $(e.currentTarget).attr("next");
-    var playerName = $("#player-name").val();
     var moveAlong = false;
+    playerName = $("#player-name").val();
 
     // start loop: if nextCard is EQUAL to an <a next="card--X"> go to next 
     switch (nextCard) {
@@ -83,14 +84,14 @@ function handleSetup (e) {
 
         StartCombat.playerVersusEnemy(createdPlayer, createdEnemy);
 
-        $('#playagain').click( () => {
-          console.log('not yet');
+      /*  $('#playagain').click( () => {
+          console.log('not yet'); */
           /* we need to create a new instance of obj or values will be the same... below code doesn't work
           createdPlayer = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
           createdEnemy = Enemies.createEnemy();
           StartCombat.playerVersusEnemy(createdPlayer, createdEnemy);
           */
-        });
+       // });
 
         break;
 
@@ -112,6 +113,12 @@ function handleSetup (e) {
     });
 
 }
+
+$('#playagain').click( () => {
+  createdPlayer = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
+  var x = Enemies.createEnemy();
+  StartCombat.playerVersusEnemy(createdPlayer, x);
+});
 
 function showPlayerStats() {
   var outputPlayerStats = document.getElementsByClassName("playerStats");

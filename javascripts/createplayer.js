@@ -23,6 +23,8 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.class = new GuildHall.Berserker();
       } else if (setClass === 'Monk') {
         newPlayer.class = new GuildHall.Monk();
+      } else if (setClass === 'Shaman') {
+        newPlayer.class = new GuildHall.Shaman();        
       } else if (setClass === 'Wizard') {
         newPlayer.class = new GuildHall.Wizard();
       } else if (setClass === 'Sorcerer') {

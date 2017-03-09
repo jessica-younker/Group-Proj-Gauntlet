@@ -65,12 +65,12 @@ Tools.WarHammer = function() {
 };
 Tools.WarHammer.prototype = new Tools.Weapon();
 
-Tools.NinjaStar = function() {        
-  this.name = "ninja star";
+Tools.Shuriken = function() {        
+  this.name = "shuriken";
   this.damage = 6;
   this.hands = 1;
 };
-Tools.NinjaStar.prototype = new Tools.Weapon();
+Tools.Shuriken.prototype = new Tools.Weapon();
 
 Tools.BearHands = function() {        
   this.name = "bear hands";

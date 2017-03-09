@@ -28,8 +28,6 @@ Combatants.Player = function(name) {
   this.toString = function() {
     var output = [this.playerName,
       ": a ",
-      this.skinColor,
-      " skinned ",
       this.species,
       " ",
       this.class,

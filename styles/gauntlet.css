@@ -149,6 +149,7 @@ body {
   font-weight: bold;
 }
 
+
 .combatContainer {
   text-align: center;
   padding: 1em;
@@ -156,4 +157,12 @@ body {
 
 .gameOver {
   text-align: center;
+
+.PlayerStats,
+.CombatInfo {
+  font-size: 0.5em;
+}
+
+.WinOrLose {
+  font-size: 1em;
 }

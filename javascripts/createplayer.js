@@ -59,7 +59,12 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.setWeapon(new Tools.Rapier());
       } else if (setWeapon === 'WarHammer') {
         newPlayer.setWeapon(new Tools.WarHammer());
-      } else {
+      } else if (setWeapon === 'BareHands') {
+        newPlayer.setWeapon(new Tools.BareHands());
+      } else if (setWeapon === 'NinjaStar') {
+        newPlayer.setWeapon(new Tools.NinjaStar());
+      }
+      else {
         console.log('createPlayer: No Weapon Set - Should not happen');
         newPlayer.weapon = 'noWeapon';
       }

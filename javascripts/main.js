@@ -11,8 +11,8 @@ let Tools = require("./weapons.js"),
     StartCombat = require('./startcombat.js');
 
 let playerName,
-    classChoosen, 
-    weaponChoosen,
+    classChosen, 
+    weaponChosen,
     createdPlayer,
     createdEnemy;
 
@@ -36,26 +36,32 @@ function handleSetup (e) {
         moveAlong = ($("#player-name").val() !== "");
 
         $('.class__link').click(function() {
-          classChoosen = $(this).attr('id');
-          console.log('handleSetup: card--card: You choose the class:', classChoosen);
+          classChosen = $(this).attr('id');
+          console.log('handleSetup: card--card: You choose the class:', classChosen);
         });
 
         break;
 
       case "card--weapon":
-        moveAlong = (classChoosen !== undefined);
-
+        moveAlong = (classChosen !== undefined);
+        $('#spellButtons').hide();
+        $('#weaponButtons').hide();
+        if (classChosen === "Shaman" || classChosen ==="Wizard" || classChosen ==="Conjurer" || classChosen ==="Sorcerer") {
+            $('#spellButtons').show();
+        } else {
+            $('#weaponButtons').show();
+        } 
         $('.weapon__link').click(function() {
-          weaponChoosen = $(this).attr('id');
-          console.log('handleSetup: card--weapon: You choose the weapon: ', weaponChoosen);
+          weaponChosen = $(this).attr('id');
+          console.log('handleSetup: card--weapon: You choose the weapon: ', weaponChosen);
         });
 
         break;
 
       case "card--battleground":
-        moveAlong = (weaponChoosen !== undefined);
+        moveAlong = (weaponChosen !== undefined);
 
-        createdPlayer = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
+        createdPlayer = CreatePlayer.createPlayer(playerName, classChosen, weaponChosen);
 
           let playerStats =
             '<br />' + 'name: ' + createdPlayer.playerName +
@@ -86,7 +92,7 @@ function handleSetup (e) {
 
         $('#playagain').click( () => {
             // we need more health again
-            var y = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
+            var y = CreatePlayer.createPlayer(playerName, classChosen, weaponChosen);
             var x = Enemies.createEnemy(); // create new Enemy
             StartCombat.playerVersusEnemy(y, x);
         });

@@ -23,6 +23,8 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.class = new GuildHall.Berserker();
       } else if (setClass === 'Monk') {
         newPlayer.class = new GuildHall.Monk();
+      } else if (setClass === 'Shaman') {
+        newPlayer.class = new GuildHall.Shaman();        
       } else if (setClass === 'Wizard') {
         newPlayer.class = new GuildHall.Wizard();
       } else if (setClass === 'Sorcerer') {
@@ -35,6 +37,8 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.class = new GuildHall.Ninja();
       } else if (setClass === 'Assassin') {
         newPlayer.class = new GuildHall.Assassin();
+      } else if (setClass === 'surpriseme') {
+        newPlayer.generateClass();
       } else {
         console.log('createPlayer: No Class Set - Should not happen');
         newPlayer.class = 'noClass';
@@ -45,8 +49,16 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.setWeapon(new Tools.Dagger());
       } else if (setWeapon === 'BroadSword') {
         newPlayer.setWeapon(new Tools.BroadSword());
-      } else if (setWeapon === 'WarAxe') {
-        newPlayer.setWeapon(new Tools.WarAxe());
+      } else if (setWeapon === 'BattleAxe') {
+        newPlayer.setWeapon(new Tools.BattleAxe());
+      } else if (setWeapon === 'BrassKnuckles') {
+        newPlayer.setWeapon(new Tools.BrassKnuckles());
+      } else if (setWeapon === 'Pike') {
+        newPlayer.setWeapon(new Tools.Pike());
+      } else if (setWeapon === 'Rapier') {
+        newPlayer.setWeapon(new Tools.Rapier());
+      } else if (setWeapon === 'WarHammer') {
+        newPlayer.setWeapon(new Tools.WarHammer());
       } else {
         console.log('createPlayer: No Weapon Set - Should not happen');
         newPlayer.weapon = 'noWeapon';

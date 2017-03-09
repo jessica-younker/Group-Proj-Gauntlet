@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="lib/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="styles/gauntlet.css">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
 </head>
 
 <body>
@@ -65,7 +66,7 @@
             <div class="card__button">
               <a class="class__link btn btn--big btn--blue" id="Berserker" href="#">
                 <span class="btn__prompt">></span>
-                <span class="btn__text">berserker</span>
+                <span class="btn__text">Berserker</span>
               </a>
             </div>      
             
@@ -160,36 +161,84 @@
           </a>          
         </div>
       </div>
+      
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="BrassKnuckles" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Brass Knuckles</span>
+            </a>
+          </div>
 
-		<div class="card__button">
-			<a class="weapon__link btn btn--big btn--blue" id="Dagger" href="#">
-				<span class="btn__prompt">></span>
-				<span class="btn__text">Dagger</span>
-			</a>
-		</div>
+          <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="Dagger" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Dagger</span>
+            </a>
+          </div>
 
-		<div class="card__button">
-			<a class="weapon__link btn btn--big btn--blue" id="BroadSword" href="#">
-				<span class="btn__prompt">></span>
-				<span class="btn__text">Broad Sword</span>
-			</a>
-		</div>
+          <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="Rapier" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Rapier</span>
+            </a>
+          </div>
+        </div class="col-sm-4">
+        <div class="col-sm-4">
+          <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="Pike" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Pike</span>
+            </a>
+          </div>
+    
+          <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="BroadSword" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Broad Sword</span>
+            </a>
+          </div>
 
-		<div class="card__button">
-			<a class="weapon__link btn btn--big btn--blue" id="WarAxe" href="#">
-				<span class="btn__prompt">></span>
-				<span class="btn__text">War Axe</span>
-			</a>
-		</div>
+          <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="BattleAxe" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Battle Axe</span>
+            </a>
+          </div>
+        </div class="col-sm-4">
+        <div class="col-sm-4">
+          <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="WarHammer" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">War Hammer</span>
+            </a>
+          </div>
+          <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="NinjaStar" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Ninja Star</span>
+            </a>
+          </div>
+           <div class="card__button">
+            <a class="weapon__link btn btn--big btn--blue" id="BareHands" href="#">
+              <span class="btn__prompt">></span>
+              <span class="btn__text">Bare Hands</span>
+            </a>
+          </div>
+      	</div>
 
-		<div class="card__button">
-	        <a class="card__link btn btn--big btn--orange" 
-	           href="#" 
-	           next="card--battleground">
-	          <span class="btn__prompt">></span>
-	          <span class="btn__text">defeat your enemies</span>
-	        </a>
-	 	</div>
+      		<div class="card__button">
+      	        <a class="card__link btn btn--big btn--orange" 
+      	           href="#" 
+      	           next="card--battleground">
+      	          <span class="btn__prompt">></span>
+      	          <span class="btn__text">defeat your enemies</span>
+      	        </a>
+      	 	</div>
+
+    </div>
 
     </section>
 
@@ -200,9 +249,15 @@
       <h1>BATTLEGROUND</h1>
       </div>
 
-      <div class="statsContainer">
-        <span class="playerStats">Player Stats</span><br /><br /><br />
-        <span class="enemyStats">Enemy Stats</span>
+      <div class="row">
+        <div class="col-md-5 statsCardStyle">
+        <h2>Player Stats</h2>
+        <span class="playerStats">
+        </div>
+        <div class="col-md-5 statsCardStyle">
+        <h2>Enemy Stats</h2>
+        <span class="enemyStats"></span>
+        </div>
       </div>
 
         <div class="card__button">

@@ -16,12 +16,33 @@ Tools.Weapon = function() {
   };
 };
  
+Tools.BrassKnuckles = function() {        
+  this.name = "brass knuckles";
+  this.damage = 3;
+  this.hands = 2;
+};
+Tools.BrassKnuckles.prototype = new Tools.Weapon();
+ 
 Tools.Dagger = function() {        
   this.name = "dagger";
   this.damage = 4;
   this.hands = 1;
 };
 Tools.Dagger.prototype = new Tools.Weapon();
+
+Tools.Rapier = function() {        
+  this.name = "rapier";
+  this.damage = 10;
+  this.hands = 1;
+};
+Tools.Rapier.prototype = new Tools.Weapon();
+
+Tools.Pike = function() {        
+  this.name = "pike";
+  this.damage = 12;
+  this.hands = 2;
+};
+Tools.Pike.prototype = new Tools.Weapon();
 
 Tools.BroadSword = function() {
   this.name = "broad sword";
@@ -30,11 +51,32 @@ Tools.BroadSword = function() {
 };
 Tools.BroadSword.prototype = new Tools.Weapon();
 
-Tools.WarAxe = function() {
-  this.name = "war axe";
+Tools.BattleAxe = function() {
+  this.name = "battle axe";
   this.damage = 18;
   this.hands = 2;
 };
-Tools.WarAxe.prototype = new Tools.Weapon();
+Tools.BattleAxe.prototype = new Tools.Weapon();
+
+Tools.WarHammer = function() {        
+  this.name = "war hammer";
+  this.damage = 20;
+  this.hands = 2;
+};
+Tools.WarHammer.prototype = new Tools.Weapon();
+
+Tools.NinjaStar = function() {        
+  this.name = "ninja star";
+  this.damage = 6;
+  this.hands = 1;
+};
+Tools.NinjaStar.prototype = new Tools.Weapon();
+
+Tools.BareHands = function() {        
+  this.name = "bare hands";
+  this.damage = 2;
+  this.hands = 2;
+};
+Tools.BareHands.prototype = new Tools.Weapon();
 
 module.exports = Tools;

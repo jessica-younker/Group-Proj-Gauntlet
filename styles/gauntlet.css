@@ -9,8 +9,6 @@ body {
   font-size: 3em;
 }
 
-
-
 .field {
   margin: 20px 0 0 0;
 }
@@ -108,8 +106,6 @@ body {
   border-radius: 0 5px 5px 0;
 }
 
-
-
 /*
   Battleground styles
  */
@@ -118,29 +114,11 @@ body {
   text-align: center;
 }
 
-.statsContainer {
-  width: 100%;
-  /*text-align: center;*/
-  padding: .25em;
-  font-size: 20px;
-  border: solid .10em;
-  height: 400px;
-}
-
-/*.playerStats {
-
-}
-
-.enemyStats {
-
-}*/
-
-
 .statsCardStyle {
   text-align: center;
   border: dotted .10em;
-  max-width: 45%;
-  margin: 2em;
+  /* max-width: 45%; */
+  margin: 1em;
   padding: 1em;
   font-family: 'VT323', monospace;
 }
@@ -149,21 +127,16 @@ body {
   font-weight: bold;
 }
 
-
-.combatContainer {
-  text-align: center;
-  padding: 1em;
-}
-
 .gameOver {
   text-align: center;
 }
 
-.PlayerStats,
 .CombatInfo {
   font-size: 0.5em;
 }
 
+.PlayerStats,
 .WinOrLose {
-  font-size: 1em;
+  font-size: 0.8em;
 }
+

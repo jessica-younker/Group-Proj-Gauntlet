@@ -113,13 +113,6 @@ function handleSetup (e) {
 
 }
 
-function showPlayerStats() {
-  var outputPlayerStats = document.getElementsByClassName("playerStats");
-}
-
-function showEnemyStats() {
-  var outputEnemyStats = document.getElementsByClassName("enemyStats");
-}
 
 // var warrior = new Combatants.Human();
 // warrior.setWeapon(new Tools.WarAxe());

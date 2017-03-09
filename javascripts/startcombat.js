@@ -1,6 +1,7 @@
 'use strict';
 
 var StartCombat = {};
+var limbs = ["head", "neck", "arm", "leg", "torso", "foot", "blatter", "heart", "liver"];
 
 StartCombat.playerVersusEnemy = (player, enemy) => {
 	$('.WinOrLose').empty();
@@ -15,32 +16,48 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 	if ( player.health > 0 || enemy.health > 0 ) {
 		let num = 1;
 
-		while (true) {
+		while (true) { // may not be needed... we need a button for rounds
 			$('.CombatInfo').append('<br />' + '<b>Round ' + num + ': </b><br />');
 
+			const staticPlayerWeaponDamage = player.weapon.damage;
+			const staticEnemyWeaponDamage = enemy.weapon.damage;
+			let enemyDamageToPlayer, playerDamageToEnemy;
+
+			if (num >= 2) {	
+				enemy.weapon.damage = staticPlayerWeaponDamage +  Math.floor(Math.random() * 8.5);
+				player.weapon.damage = staticEnemyWeaponDamage +  Math.floor(Math.random() * 8.5);
+			}
+
 			player.health = player.health - enemy.weapon.damage;
-			let enemyDamageToPlayer = enemy.playerName + ' attacks ' + player.playerName + ' for ' + enemy.weapon.damage + 'hp. ' + player.playerName + `'s` + ' health is now ' + player.health + '.<br />';
+
+			if (player.health <= 0) {
+				player.health = '0';
+				enemyDamageToPlayer = '<h3>' + enemy.playerName + ' attacks ' + player.playerName + ' for ' + enemy.weapon.damage + 'hp. ' + enemy.playerName + ' rips off ' + player.playerName + `'s ` + limbs[Math.floor(Math.random()*limbs.length)] + '. ' + player.playerName + ' is now DEAD. <br /></h3>';	
+			} else {
+				enemyDamageToPlayer = enemy.playerName + ' attacks ' + player.playerName + ' for ' + enemy.weapon.damage + 'hp. ' + player.playerName + `'s` + ' health is now ' + player.health + '.<br />';
+			}
 			$('.CombatInfo').append(enemyDamageToPlayer);
 
 			if ( player.health <= 0 ) {
-				console.log(player.playerName + ' has lost.');
-
+				player.health = 0;
 				let playerLost = `${player.playerName} has lost.` + ' ' + `Enemy ${enemy.playerName} has won.` + '</b>';
 				$('.WinOrLose').append(playerLost);
-
 				break;
 			}
 
 			enemy.health = enemy.health - player.weapon.damage;
-			let playerDamageToEnemy = player.playerName + ' attacks ' + enemy.playerName + ' for ' + player.weapon.damage + 'hp. ' + enemy.playerName + `'s` + ' health is now ' + enemy.health + '.<br />';
+			
+			if (enemy.health <= 0) {
+				enemy.health = '0';
+				playerDamageToEnemy = '<h3>' + player.playerName + ' attacks ' + enemy.playerName + ' for ' + player.weapon.damage + 'hp. ' + player.playerName + ' rips off ' + enemy.playerName + `'s ` + limbs[Math.floor(Math.random()*limbs.length)] + '. ' + enemy.playerName + ' is now DEAD. <br /></h3>';	
+			} else {
+				playerDamageToEnemy = player.playerName + ' attacks ' + enemy.playerName + ' for ' + player.weapon.damage + 'hp. ' + enemy.playerName + `'s` + ' health is now ' + enemy.health + '.<br />';
+			}
 			$('.CombatInfo').append(playerDamageToEnemy);
 
 			if ( enemy.health <= 0 ) {
-				console.log(enemy.playerName + ' has lost.');
-				
 				let enemyLost = `Enemy ${enemy.playerName} has lost.` + ' ' + `${player.playerName} has won.` + '</b>';
 				$('.WinOrLose').append(enemyLost);
-
 				break;
 			}
 

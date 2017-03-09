@@ -117,14 +117,3 @@ function handleSetup (e) {
     });
 
 }
-
-// var warrior = new Combatants.Human();
-// warrior.setWeapon(new Tools.WarAxe());
-// warrior.generateClass();  // This will be used for "Surprise me" option
-// console.log(warrior.toString());
-/*
-  Test code to generate a spell
- */
-// var spell = new SpellBook.Sphere();
-// console.log("spell: ", spell.toString());
-// 

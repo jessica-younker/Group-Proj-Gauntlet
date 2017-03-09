@@ -18,6 +18,8 @@ SpellBook.Spell = function() {
 
   this.toString = function() {
     return this.name + " of " + this.type + " for " + this.damage + " damage!";
+    // to remove of "light, fire, etc"
+    // return this.name + " for " + this.damage + " damage! ";
   };
 };
 

@@ -3,40 +3,43 @@
 var StartCombat = {};
 
 StartCombat.playerVersusEnemy = (player, enemy) => {
-	$('.combatContainer').empty();
+	$('.WinOrLose').empty();
+	$('.PlayerStats').empty();
+	$('.CombatInfo').empty();
 
 	console.log('player obj: ', player);
 	console.log('enemy obj: ', enemy);
 
-	console.log(player.toString() );
-	console.log(enemy.toString() );
+	$('.PlayerStats').append('Player- ' + player.toString() + '<br /> Enemy- ' + enemy.toString() );
 
 	if ( player.health > 0 || enemy.health > 0 ) {
 		let num = 1;
 
 		while (true) {
-			console.log('Round ', num);
+			$('.CombatInfo').append('<br />' + '<b>Round ' + num + ': </b><br />');
 
 			player.health = player.health - enemy.weapon.damage;
-			console.log(enemy.playerName + ' attacks ' + player.playerName + ' for ' + enemy.weapon.damage + 'hp. ' + player.playerName + `'s` + ' health is now ' + player.health);
+			let enemyDamageToPlayer = enemy.playerName + ' attacks ' + player.playerName + ' for ' + enemy.weapon.damage + 'hp. ' + player.playerName + `'s` + ' health is now ' + player.health + '<br />';
+			$('.CombatInfo').append(enemyDamageToPlayer);
 
 			if ( player.health <= 0 ) {
 				console.log(player.playerName + ' has lost.');
 
-				let playerLost = `${player.playerName} has lost.` + '<br /><br />' + '<b>' + `${enemy.playerName} has won.` + '</b>';
-				$('.combatContainer').append(playerLost);
+				let playerLost = `${player.playerName} has lost.` + ' ' + `Enemy ${enemy.playerName} has won.` + '</b>';
+				$('.WinOrLose').append(playerLost);
 
 				break;
 			}
 
 			enemy.health = enemy.health - player.weapon.damage;
-			console.log(player.playerName + ' attacks ' + enemy.playerName + ' for ' + player.weapon.damage + 'hp. ' + enemy.playerName + `'s` + ' health is now ' + enemy.health);
+			let playerDamageToEnemy = player.playerName + ' attacks ' + enemy.playerName + ' for ' + player.weapon.damage + 'hp. ' + enemy.playerName + `'s` + ' health is now ' + enemy.health + '<br />';
+			$('.CombatInfo').append(playerDamageToEnemy);
 
 			if ( enemy.health <= 0 ) {
 				console.log(enemy.playerName + ' has lost.');
 				
-				let enemyLost = `${enemy.playerName} has lost.` + '<br /><br />' + '<b>' + `${player.playerName} has won.` + '</b>';
-				$('.combatContainer').append(enemyLost);
+				let enemyLost = `Enemy ${enemy.playerName} has lost.` + ' ' + `${player.playerName} has won.` + '</b>';
+				$('.WinOrLose').append(enemyLost);
 
 				break;
 			}

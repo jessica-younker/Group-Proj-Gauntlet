@@ -27,7 +27,7 @@
            href="#" 
            next="card--class">
           <span class="btn__prompt">></span>
-          <span class="btn__text" id="select_class_btn">Select class</span>
+          <span class="btn__text" id="select_class_btn">SELECT CLASS</span>
         </a>
       </div>
     </section>
@@ -143,7 +143,7 @@
            href="#" 
            next="card--weapon">
           <span class="btn__prompt">></span>
-          <span class="btn__text">Select weapon</span>
+          <span class="btn__text">SELECT WEAPON</span>
         </a>
       </div>
     </section>
@@ -151,7 +151,7 @@
     <!-- insert weapons page -->
     <section id="weapon-select" class="card card--weapon">
       <div class="card__prompt">
-        <div>choose your weapon</div>
+        <div>CHOOSE YOUR WEAPON</div>
         <div>
           <a class="card__back btn btn--small" 
              href="#"
@@ -222,9 +222,9 @@
             </a>
           </div>
            <div class="card__button">
-            <a class="weapon__link btn btn--big btn--blue" id="BareHands" href="#">
+            <a class="weapon__link btn btn--big btn--blue" id="BearHands" href="#">
               <span class="btn__prompt">></span>
-              <span class="btn__text">Bare Hands</span>
+              <span class="btn__text">Bear Hands</span>
             </a>
           </div>
       </div>
@@ -285,8 +285,15 @@
       	          <span class="btn__text">defeat your enemies</span>
       	        </a>
       	 	</div>
+      	</div>
+      </div>
 
-    
+      <div class="card__button">
+      	<a class="card__link btn btn--big btn--orange" href="#" next="card--battleground">
+      	   <span class="btn__prompt">></span>
+      	   <span class="btn__text">defeat your enemies</span>
+      	</a>
+      </div>
 
     </section>
 
@@ -332,13 +339,17 @@
     <section id="runbattle" class="card card--runbattle">
       
       <div class="card__prompt">
-        <div>Battle</div>
+        <div>Battle Outcome</div>
+        <br>
       </div>
 
       <div class="PlayerStats"></div>
       <div class="CombatInfo"></div><br />
       <div class="WinOrLose"></div>
 
+      <div class="gameOver">
+      <iframe src="//giphy.com/embed/yRHAZGHAIz6kE" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/game-over-yRHAZGHAIz6kE"></a></p>
+      </div>
         <div class="card__button">
               <a class="btn btn--big btn--orange" id="playagain"
                  href="#">

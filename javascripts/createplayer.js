@@ -47,8 +47,16 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.setWeapon(new Tools.Dagger());
       } else if (setWeapon === 'BroadSword') {
         newPlayer.setWeapon(new Tools.BroadSword());
-      } else if (setWeapon === 'WarAxe') {
-        newPlayer.setWeapon(new Tools.WarAxe());
+      } else if (setWeapon === 'BattleAxe') {
+        newPlayer.setWeapon(new Tools.BattleAxe());
+      } else if (setWeapon === 'BrassKnuckles') {
+        newPlayer.setWeapon(new Tools.BrassKnuckles());
+      } else if (setWeapon === 'Pike') {
+        newPlayer.setWeapon(new Tools.Pike());
+      } else if (setWeapon === 'Rapier') {
+        newPlayer.setWeapon(new Tools.Rapier());
+      } else if (setWeapon === 'WarHammer') {
+        newPlayer.setWeapon(new Tools.WarHammer());
       } else {
         console.log('createPlayer: No Weapon Set - Should not happen');
         newPlayer.weapon = 'noWeapon';

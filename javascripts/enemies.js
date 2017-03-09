@@ -5,7 +5,8 @@ console.log("enemies.js linked");
 
  var GuildHall = require("./classes.js"),
      Combatants = require("./player.js"),
-     Tools = require("./weapons.js");
+     Tools = require("./weapons.js"),
+     Spell = require("./spells.js");
 
 let Enemies = {};
 
@@ -28,6 +29,7 @@ Enemies.Orc = function() {
   this.species = "Orc";
   this.allowedClasses = ["Warrior", "Berserker", "Shaman"];
   this.allowedWeapons = ["Dagger", "BroadSword", "WarAxe"];
+  this.allowedSpells = ["Sphere"];
 
   this.generateClass = function() {
     // Get a random index from the allowed classes array
@@ -42,15 +44,24 @@ Enemies.Orc = function() {
   };
 
   this.generateWeapon = function() {
-    // Get a random index from the allowed classes array
-    var random = Math.round(Math.random() * (this.allowedWeapons.length - 1));
+    var random;
+    if (this.class.magical) {
+        random = Math.round(Math.random() * (this.allowedSpells.length - 1));
+        var randomSpell = this.allowedSpells[random];
+        this.setWeapon(new Spell[randomSpell]());
 
-    // Get the string at the index
-    var randomWeapon = this.allowedWeapons[random];
+    } else {
+        // Get a random index from the allowed classes array
+        random = Math.round(Math.random() * (this.allowedWeapons.length - 1));
 
-    // Composes the corresponding player class into the player object
-    this.weapon = new Tools[randomWeapon]();
-    return this.weapon;
+        // Get the string at the index
+        var randomWeapon = this.allowedWeapons[random];
+
+        // Composes the corresponding player class into the player object
+        this.weapon = new Tools[randomWeapon]();
+        console.log("generateweapon", this.weapon.toString());
+        return this.weapon;
+    }
   };
 };
 

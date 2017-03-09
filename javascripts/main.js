@@ -85,8 +85,10 @@ function handleSetup (e) {
         StartCombat.playerVersusEnemy(createdPlayer, createdEnemy);
 
         $('#playagain').click( () => {
+            // we need more health again
+            var y = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
             var x = Enemies.createEnemy(); // create new Enemy
-            StartCombat.playerVersusEnemy(createdPlayer, x);
+            StartCombat.playerVersusEnemy(y, x);
         });
 
         break;

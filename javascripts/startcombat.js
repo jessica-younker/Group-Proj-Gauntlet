@@ -19,7 +19,7 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 			$('.CombatInfo').append('<br />' + '<b>Round ' + num + ': </b><br />');
 
 			player.health = player.health - enemy.weapon.damage;
-			let enemyDamageToPlayer = enemy.playerName + ' attacks ' + player.playerName + ' for ' + enemy.weapon.damage + 'hp. ' + player.playerName + `'s` + ' health is now ' + player.health + '<br />';
+			let enemyDamageToPlayer = enemy.playerName + ' attacks ' + player.playerName + ' for ' + enemy.weapon.damage + 'hp. ' + player.playerName + `'s` + ' health is now ' + player.health + '.<br />';
 			$('.CombatInfo').append(enemyDamageToPlayer);
 
 			if ( player.health <= 0 ) {
@@ -32,7 +32,7 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 			}
 
 			enemy.health = enemy.health - player.weapon.damage;
-			let playerDamageToEnemy = player.playerName + ' attacks ' + enemy.playerName + ' for ' + player.weapon.damage + 'hp. ' + enemy.playerName + `'s` + ' health is now ' + enemy.health + '<br />';
+			let playerDamageToEnemy = player.playerName + ' attacks ' + enemy.playerName + ' for ' + player.weapon.damage + 'hp. ' + enemy.playerName + `'s` + ' health is now ' + enemy.health + '.<br />';
 			$('.CombatInfo').append(playerDamageToEnemy);
 
 			if ( enemy.health <= 0 ) {

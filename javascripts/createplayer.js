@@ -35,6 +35,8 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.class = new GuildHall.Ninja();
       } else if (setClass === 'Assassin') {
         newPlayer.class = new GuildHall.Assassin();
+      } else if (setClass === 'surpriseme') {
+        newPlayer.generateClass();
       } else {
         console.log('createPlayer: No Class Set - Should not happen');
         newPlayer.class = 'noClass';

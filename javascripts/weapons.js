@@ -12,7 +12,7 @@ Tools.Weapon = function() {
   this.hands = 2;
 
   this.toString = function() {
-    return this.name;
+    return this.name + " for " + this.damage + " damage!";
   };
 };
  

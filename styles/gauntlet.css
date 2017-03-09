@@ -149,6 +149,15 @@ body {
   font-weight: bold;
 }
 
+
+.combatContainer {
+  text-align: center;
+  padding: 1em;
+}
+
+.gameOver {
+  text-align: center;
+
 .PlayerStats,
 .CombatInfo {
   font-size: 0.5em;

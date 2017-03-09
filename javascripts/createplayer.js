@@ -62,8 +62,8 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.setWeapon(new Tools.WarHammer());
       } else if (setWeapon === 'BearHands') {
         newPlayer.setWeapon(new Tools.BearHands());
-      } else if (setWeapon === 'NinjaStar') {
-        newPlayer.setWeapon(new Tools.NinjaStar());
+      } else if (setWeapon === 'Shuriken') {
+        newPlayer.setWeapon(new Tools.Shuriken());
       } else if (setWeapon === 'Sphere') {
         newPlayer.setWeapon(new Spell.Sphere());
       } else if (setWeapon === 'BadLarry') {

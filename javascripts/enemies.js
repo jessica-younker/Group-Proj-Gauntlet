@@ -28,7 +28,7 @@ Enemies.Orc = function() {
   this.health = this.health + 20;
   this.allowedClasses = [ "Warrior", "Berserker", "Shaman", "Conjurer", "Sorcerer" ];
   this.allowedWeapons = ["BrassKnuckles", "Dagger", "BroadSword", "BattleAxe", "WarHammer"];
-  this.allowedSpells = ["Sphere"];
+  this.allowedSpells = ["Sphere", "FreakyFriday", "HeebyJeebs", "BadLarry", "StartledMingus"];
   this.allowedSpecies = [ "Orc","Swamp Tentacle", "Troll", "Vampire Bat", "Scorpion", "Reaper" ];
   this.allowedNames = [
       "Ug", "Onog", "Wogharod", "Supaugh", "Xugug", "Prutha",

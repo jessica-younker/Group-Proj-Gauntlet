@@ -29,7 +29,7 @@ Enemies.Orc = function() {
   this.species = "Orc";
   this.allowedClasses = ["Warrior", "Berserker", "Shaman"];
   this.allowedWeapons = ["Dagger", "BroadSword", "WarAxe"];
-  this.allowedSpells = ["Sphere"];
+  this.allowedSpells = ["Sphere", "FreakyFriday", "HeebyJeebs", "BadLarry", "StartledMingus"];
 
   this.generateClass = function() {
     // Get a random index from the allowed classes array

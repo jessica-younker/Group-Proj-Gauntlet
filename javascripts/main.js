@@ -84,14 +84,10 @@ function handleSetup (e) {
 
         StartCombat.playerVersusEnemy(createdPlayer, createdEnemy);
 
-      /*  $('#playagain').click( () => {
-          console.log('not yet'); */
-          /* we need to create a new instance of obj or values will be the same... below code doesn't work
-          createdPlayer = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
-          createdEnemy = Enemies.createEnemy();
-          StartCombat.playerVersusEnemy(createdPlayer, createdEnemy);
-          */
-       // });
+        $('#playagain').click( () => {
+            var x = Enemies.createEnemy(); // create new Enemy
+            StartCombat.playerVersusEnemy(createdPlayer, x);
+        });
 
         break;
 
@@ -112,20 +108,6 @@ function handleSetup (e) {
       $("." + previousCard).show();
     });
 
-}
-
-$('#playagain').click( () => {
-  createdPlayer = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
-  var x = Enemies.createEnemy();
-  StartCombat.playerVersusEnemy(createdPlayer, x);
-});
-
-function showPlayerStats() {
-  var outputPlayerStats = document.getElementsByClassName("playerStats");
-}
-
-function showEnemyStats() {
-  var outputEnemyStats = document.getElementsByClassName("enemyStats");
 }
 
 // var warrior = new Combatants.Human();

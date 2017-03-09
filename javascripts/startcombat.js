@@ -1,7 +1,7 @@
 'use strict';
 
 var StartCombat = {};
-var limbs = ["head", "neck", "arm", "leg", "torso", "foot", "blatter", "heart", "liver"];
+var limbs = ["head", "neck", "arm", "leg", "torso", "foot", "blatter", "heart", "liver", "eyes", "ears"];
 
 StartCombat.playerVersusEnemy = (player, enemy) => {
 	$('.WinOrLose').empty();
@@ -16,8 +16,11 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 	if ( player.health > 0 || enemy.health > 0 ) {
 		let num = 1;
 
-		while (true) { // may not be needed... we need a button for rounds
+		while (true) {
 			$('.CombatInfo').append('<br />' + '<b>Round ' + num + ': </b><br />');
+
+			var coinFlip = Math.floor(Math.random() * 2 + 1);
+			// Each Round Math.Random determines who plays the round. This could be good or bad :)
 
 			const staticPlayerWeaponDamage = player.weapon.damage;
 			const staticEnemyWeaponDamage = enemy.weapon.damage;
@@ -28,6 +31,7 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 				player.weapon.damage = staticEnemyWeaponDamage +  Math.floor(Math.random() * 8.5);
 			}
 
+		if (coinFlip === 1) {
 			player.health = player.health - enemy.weapon.damage;
 
 			if (player.health <= 0) {
@@ -44,7 +48,7 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 				$('.WinOrLose').append(playerLost);
 				break;
 			}
-
+		} else {
 			enemy.health = enemy.health - player.weapon.damage;
 			
 			if (enemy.health <= 0) {
@@ -60,7 +64,7 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 				$('.WinOrLose').append(enemyLost);
 				break;
 			}
-
+		}
 			num++;
 
 		} // end loop

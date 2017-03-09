@@ -72,11 +72,11 @@ Tools.NinjaStar = function() {
 };
 Tools.NinjaStar.prototype = new Tools.Weapon();
 
-Tools.BareHands = function() {        
-  this.name = "bare hands";
+Tools.BearHands = function() {        
+  this.name = "bear hands";
   this.damage = 2;
   this.hands = 2;
 };
-Tools.BareHands.prototype = new Tools.Weapon();
+Tools.BearHands.prototype = new Tools.Weapon();
 
 module.exports = Tools;

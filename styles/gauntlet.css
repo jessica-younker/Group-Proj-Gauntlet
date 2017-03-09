@@ -148,3 +148,12 @@ body {
 .statsCardStyle h3 {
   font-weight: bold;
 }
+
+.combatContainer {
+  text-align: center;
+  padding: 1em;
+}
+
+.gameOver {
+  text-align: center;
+}

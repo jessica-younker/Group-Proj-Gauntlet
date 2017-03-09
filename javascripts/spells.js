@@ -86,4 +86,13 @@ SpellBook.StartledMingus = function() {
 };
 SpellBook.StartledMingus.prototype = new SpellBook.Spell();
 
+SpellBook.GlasgowKiss = function() {
+  this.name = "glasgowKiss";
+  this.damage = Math.floor(Math.random() * 3 + 20);
+
+  var random = Math.round(Math.random() * (this.damageTypes.length - 1));
+  this.type = this.damageTypes[random];
+};
+SpellBook.GlasgowKiss.prototype = new SpellBook.Spell();
+
 module.exports = SpellBook;

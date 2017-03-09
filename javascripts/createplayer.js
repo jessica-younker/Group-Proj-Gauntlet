@@ -2,7 +2,8 @@
 
  var GuildHall = require("./classes.js"),
      Combatants = require("./player.js"),
-     Tools = require("./weapons.js");
+     Tools = require("./weapons.js"),
+     Spell = require("./spells.js");
 
 let CreatePlayer = {};
 
@@ -59,12 +60,23 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
         newPlayer.setWeapon(new Tools.Rapier());
       } else if (setWeapon === 'WarHammer') {
         newPlayer.setWeapon(new Tools.WarHammer());
-      } else if (setWeapon === 'BareHands') {
+      } else if (setWeapon === 'BearHands') {
         newPlayer.setWeapon(new Tools.BareHands());
       } else if (setWeapon === 'Shuriken') {
         newPlayer.setWeapon(new Tools.Shuriken());
-      }
-      else {
+      } else if (setWeapon === 'Sphere') {
+        newPlayer.setWeapon(new Spell.Sphere());
+      } else if (setWeapon === 'BadLarry') {
+        newPlayer.setWeapon(new Spell.BadLarry());
+      } else if (setWeapon === 'FreakyFriday') {
+        newPlayer.setWeapon(new Spell.FreakyFriday());
+      } else if (setWeapon === 'HeebyJeebs') {
+        newPlayer.setWeapon(new Spell.HeebyJeebs());
+      } else if (setWeapon === 'StartledMingus') {
+        newPlayer.setWeapon(new Spell.StartledMingus());
+      } else if (setWeapon === 'GlasgowKiss') {
+        newPlayer.setWeapon(new Spell.GlasgowKiss());
+      } else {
         console.log('createPlayer: No Weapon Set - Should not happen');
         newPlayer.weapon = 'noWeapon';
       }

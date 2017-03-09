@@ -1,0 +1,61 @@
+"use strict";
+
+ var GuildHall = require("./classes.js"),
+     Combatants = require("./player.js"),
+     Tools = require("./weapons.js");
+
+let CreatePlayer = {};
+
+CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
+
+      console.log('createPlayer init: Parameters passed: ', setName, setClass, setWeapon);
+
+      let newPlayer = new Combatants.Human();
+          newPlayer.playerName = setName;
+
+      // we could attach an images for a class, weapon, species, etc.
+
+      if (setClass === 'Warrior') {
+        newPlayer.class = new GuildHall.Warrior();
+      } else if (setClass === 'Valkyrie') {
+        newPlayer.class = new GuildHall.Valkyrie();
+      } else if (setClass === 'Berserker') {
+        newPlayer.class = new GuildHall.Berserker();
+      } else if (setClass === 'Monk') {
+        newPlayer.class = new GuildHall.Monk();
+      } else if (setClass === 'Wizard') {
+        newPlayer.class = new GuildHall.Wizard();
+      } else if (setClass === 'Sorcerer') {
+        newPlayer.class = new GuildHall.Sorcerer();
+      } else if (setClass === 'Conjurer') {
+        newPlayer.class = new GuildHall.Conjurer();
+      } else if (setClass === 'Thief') {
+        newPlayer.class = new GuildHall.Thief();
+      } else if (setClass === 'Ninja') {
+        newPlayer.class = new GuildHall.Ninja();
+      } else if (setClass === 'Assassin') {
+        newPlayer.class = new GuildHall.Assassin();
+      } else {
+        console.log('createPlayer: No Class Set - Should not happen');
+        newPlayer.class = 'noClass';
+      }
+      // console.log('startGame: Player has Class Attached');
+
+      if (setWeapon === 'Dagger' ) {
+        newPlayer.setWeapon(new Tools.Dagger());
+      } else if (setWeapon === 'BroadSword') {
+        newPlayer.setWeapon(new Tools.BroadSword());
+      } else if (setWeapon === 'WarAxe') {
+        newPlayer.setWeapon(new Tools.WarAxe());
+      } else {
+        console.log('createPlayer: No Weapon Set - Should not happen');
+        newPlayer.weapon = 'noWeapon';
+      }
+      // console.log('createPlayer: Player has Weapon Attached');
+
+      console.log('createPlayer: Player Created');
+
+      return newPlayer;
+};
+
+module.exports = CreatePlayer;

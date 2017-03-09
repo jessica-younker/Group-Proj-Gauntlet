@@ -1,143 +1,117 @@
 "use strict";
 
-console.log("app.js linked");
+console.log("main.js linked");
 
 let Tools = require("./weapons.js"),
-  Combatants = require("./player.js"),
-  SpellBook = require("./spells.js"),
-  GuildHall = require('./classes.js'),
-  Enemies = require('./enemies.js');
+    Combatants = require("./player.js"),
+    SpellBook = require("./spells.js"),
+    GuildHall = require('./classes.js'),
+    Enemies = require('./enemies.js'),
+    CreatePlayer = require('./createplayer.js'),
+    StartCombat = require('./startcombat.js');
 
-var playerName, classChoosen, weaponChoosen;
+let classChoosen, 
+    weaponChoosen,
+    createdPlayer,
+    createdEnemy;
 
 $(document).ready(function() {
-  /*
-    Show the initial view that accepts player name
-   */
   $("#player-setup").show();
+});
 
-  /*
-    When any button with card__link class is clicked,
-    move on to the next view.
-   */
-  $(".card__link").click(function(e) {
-    var nextCard = $(this).attr("next");
+$(".card__link").click( (e) => {
+  handleSetup(e);
+});
 
+function handleSetup (e) {
+    var nextCard = $(e.currentTarget).attr("next");
+    var playerName = $("#player-name").val();
     var moveAlong = false;
 
-    playerName = $("#player-name").val();
-
-    /* start loop */
+    // start loop: if nextCard is EQUAL to an <a next="card--X"> go to next 
     switch (nextCard) {
 
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
 
         $('.class__link').click(function() {
-          // Set the class here
           classChoosen = $(this).attr('id');
-          console.log('card--class: You choose the class: ', classChoosen);
-
+          console.log('handleSetup: card--card: You choose the class:', classChoosen);
         });
 
         break;
 
       case "card--weapon":
-        moveAlong = ($("#player-name").val() !== "");
+        moveAlong = (classChoosen !== undefined);
 
         $('.weapon__link').click(function() {
-          // Set the weapon here
           weaponChoosen = $(this).attr('id');
-          console.log('card--weapon: You choose the weapon: ', weaponChoosen);
+          console.log('handleSetup: card--weapon: You choose the weapon: ', weaponChoosen);
         });
 
         break;
 
       case "card--battleground":
+        moveAlong = (weaponChoosen !== undefined);
 
-        moveAlong = ($("#player-name").val() !== "");
-        
-        console.log('Class Choosen: ', classChoosen, 'and Weapon Choosen: ', weaponChoosen);
-        console.log('Now calling startGame()');
+        createdPlayer = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
 
-        startGame(); /* - this should be called outside the loop... but for now...
-                        we should switch out of this and go to a new portion of the page */
+          let playerStats =
+            '<br />' + 'name: ' + createdPlayer.playerName +
+            '<br />' + 'class: ' + createdPlayer.class.name +
+            '<br />' + 'weapon: ' + createdPlayer.weapon.name +
+            '<br />' + 'species: ' + createdPlayer.species +
+            '<br />' + 'health: ' + createdPlayer.health +
+            '<br />' + 'intelligence: ' + createdPlayer.intelligence;
+            $('.playerStats').append(playerStats);
+
+        createdEnemy = Enemies.createEnemy();
+
+          let enemyStats =
+            '<br />' + 'name: ' + createdEnemy.playerName +
+            '<br />' + 'class: ' + createdEnemy.class.name +
+            '<br />' + 'weapon: ' + createdEnemy.weapon.name +
+            '<br />' + 'species: ' + createdEnemy.species +
+            '<br />' + 'health: ' + createdEnemy.health +
+            '<br />' + 'intelligence: ' + createdEnemy.intelligence;
+            $('.enemyStats').append(enemyStats);
 
         break;
-    } // end switch loop
 
-    if (moveAlong) {
-      $(".card").hide();
-      $("." + nextCard).show();
+      case "card--runbattle":
+        moveAlong = true;
+
+        StartCombat.playerVersusEnemy(createdPlayer, createdEnemy);
+
+        $('#playagain').click( () => {
+          console.log('not yet');
+          /* we need to create a new instance of obj or values will be the same... below code doesn't work
+          createdPlayer = CreatePlayer.createPlayer(playerName, classChoosen, weaponChoosen);
+          createdEnemy = Enemies.createEnemy();
+          StartCombat.playerVersusEnemy(createdPlayer, createdEnemy);
+          */
+        });
+
+        break;
+
     }
 
-  }); /* end cardlink  */
+    /* When True: Set Class 'Card' to Hide (hides everything)
+       Then Specifically Set the Class with the a.next to Show. */
+    if (moveAlong) { 
+      $(".card").hide();
+      $("." + nextCard).show();
+    } else {
+      console.log('Set a Name or Pick a Class or Pick a Weapon');
+    }
 
-  /*
-    When the back button clicked, move back a view
-   */
-  $(".card__back").click(function(e) {
-    var previousCard = $(this).attr("previous");
-    $(".card").hide();
-    $("." + previousCard).show();
-  });
+    $(".card__back").click(function() {
+      var previousCard = $(this).attr("previous");
+      $(".card").hide();
+      $("." + previousCard).show();
+    });
 
-}); /* end doc on */
-
-function startGame () {
-
-      console.log('startGame called. Class Picked Is: ', classChoosen);
-      console.log('startGame called. Weapon Picked Is: ', weaponChoosen);
-
-      var newPlayer = new Combatants.Human();
-          newPlayer.playerName = playerName;
-// old code gone - for git
-      if (classChoosen === 'Warrior') {
-        newPlayer.class = new GuildHall.Warrior();
-      } else if  (classChoosen === 'Valkyrie') {
-        newPlayer.class = new GuildHall.Valkyrie();
-      } else if  (classChoosen === 'Berserker') {
-        newPlayer.class = new GuildHall.Berserker();
-      } else if  (classChoosen === 'Monk') {
-        newPlayer.class = new GuildHall.Monk();
-      } else if  (classChoosen === 'Wizard') {
-        newPlayer.class = new GuildHall.Wizard();
-      } else if  (classChoosen === 'Sorcerer') {
-        newPlayer.class = new GuildHall.Sorcerer();
-      } else if  (classChoosen === 'Conjurer') {
-        newPlayer.class = new GuildHall.Conjurer();
-      } else if  (classChoosen === 'Thief') {
-        newPlayer.class = new GuildHall.Thief();
-      } else if  (classChoosen === 'Ninja') {
-        newPlayer.class = new GuildHall.Ninja();
-      } else if  (classChoosen === 'Assassin') {
-        newPlayer.class = new GuildHall.Assassin();
-      } else {
-        console.log('no class??? ');
-        // we don't want to get null errors...
-        newPlayer.class = 'noClass';
-      }
-
-      console.log('startGame. Player Now has Class Attached: ', newPlayer);
-
-      if (weaponChoosen === 'Dagger' ) {
-        newPlayer.setWeapon(new Tools.Dagger());
-      } else if (weaponChoosen === 'BroadSword') {
-        newPlayer.setWeapon(new Tools.BroadSword());
-      } else if (weaponChoosen === 'WarAxe') {
-        newPlayer.setWeapon(new Tools.WarAxe());
-      } else {
-        console.log('No Weapon??? :( ');
-        newPlayer.weapon = 'noWeapon';
-      }
-
-      console.log('startGame. Player Now has Weapon Attached: ', newPlayer);
-
-      console.log('now what do we do? ');
-
-      console.log( newPlayer.toString() );
-
-} /* end start game */
+}
 
 function showPlayerStats() {
   var outputPlayerStats = document.getElementsByClassName("playerStats");
@@ -150,10 +124,7 @@ function showEnemyStats() {
 /*
   Test code to generate a human player and an orc player
  */
-// var orc = new Enemies.Orc();
-// orc.generateClass();
-// orc.setWeapon(new Tools.BroadSword());
-// console.log(orc.toString());
+
 
 // var warrior = new Combatants.Human();
 // warrior.setWeapon(new Tools.WarAxe());

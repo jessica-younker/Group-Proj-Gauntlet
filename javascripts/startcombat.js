@@ -11,7 +11,7 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 	console.log('player obj: ', player);
 	console.log('enemy obj: ', enemy);
 
-	$('.PlayerStats').append('Player- ' + player.toString() + '<br /> Enemy- ' + enemy.toString() );
+	$('.PlayerStats').append('Player- ' + player.toString() + '<br>' + ' Enemy- ' + enemy.toString() );
 
 	if ( player.health > 0 || enemy.health > 0 ) {
 		let num = 1;
@@ -44,7 +44,7 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 
 			if ( player.health <= 0 ) {
 				player.health = 0;
-				let playerLost = `${player.playerName} has lost.` + ' ' + `Enemy ${enemy.playerName} has won.` + '</b>';
+				let playerLost = `${player.playerName} has lost.` + '<br> ' + `Enemy ${enemy.playerName} has won.` + '</b>';
 				$('.WinOrLose').append(playerLost);
 				break;
 			}
@@ -60,7 +60,7 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 			$('.CombatInfo').append(playerDamageToEnemy);
 
 			if ( enemy.health <= 0 ) {
-				let enemyLost = `Enemy ${enemy.playerName} has lost.` + ' ' + `${player.playerName} has won.` + '</b>';
+				let enemyLost = `Enemy ${enemy.playerName} has lost.` + '<br>' + `${player.playerName} has won.` + '</b>';
 				$('.WinOrLose').append(enemyLost);
 				break;
 			}

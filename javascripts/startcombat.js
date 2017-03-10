@@ -2,6 +2,8 @@
 
 var StartCombat = {};
 
+var x = require("./classes.js");
+
 StartCombat.playerVersusEnemy = (player, enemy) => {
 	$('.WinOrLose').empty();
 	$('.PlayerStats').empty();
@@ -17,8 +19,11 @@ StartCombat.playerVersusEnemy = (player, enemy) => {
 
 		while (true) { // may not be needed... we need a button for rounds
 			$('.CombatInfo').append('<br />' + '<b>Round ' + num + ': </b><br />');
+			player.health = player.health - enemy.weapon.damage + player.strengthBonus + player.intelligenceBonus;
+			console.log("player.health: ", player.health);
 
-			player.health = player.health - enemy.weapon.damage;
+			// console.log("GuildHall.PlayerClass.strengthBonus: ", GuildHall.PlayerClass.strengthBonus);
+		
 			
 			let enemyDamageToPlayer = enemy.playerName + ' attacks ' + player.playerName + ' for ' + enemy.weapon.damage + 'hp. ' + player.playerName + `'s` + ' health is now ' + player.health + '.<br />';
 			$('.CombatInfo').append(enemyDamageToPlayer);

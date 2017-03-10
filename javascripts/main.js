@@ -59,7 +59,7 @@ function handleSetup (e) {
 
           let playerStats =
             '<br />' + 'name: ' + createdPlayer.playerName +
-            '<br />' + 'class: ' + createdPlayer.class.name +
+            '<br />' + 'class: ' + createdPlayer.name +
             '<br />' + 'weapon: ' + createdPlayer.weapon.name +
             '<br />' + 'species: ' + createdPlayer.species +
             '<br />' + 'health: ' + createdPlayer.health +

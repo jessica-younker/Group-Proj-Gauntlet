@@ -9,6 +9,7 @@ var GuildHall = {};
   Base function for a player, or enemy, class (profession)
  */
 GuildHall.PlayerClass = function() {
+  this.health = 5;
   this.name = "Beggar";
   this.healthBonus = 0;
   this.strengthBonus = 0;

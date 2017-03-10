@@ -11,71 +11,71 @@ CreatePlayer.createPlayer = (setName, setClass, setWeapon) => {
 
       console.log('createPlayer init: Parameters passed: ', setName, setClass, setWeapon);
 
-      let newPlayer = new Combatants.Human();
+      let newPlayer = {};
           newPlayer.playerName = setName;
 
       // we could attach an images for a class, weapon, species, etc.
 
       if (setClass === 'Warrior') {
-        newPlayer.class = new GuildHall.Warrior();
+        newPlayer = new GuildHall.Warrior();
       } else if (setClass === 'Valkyrie') {
-        newPlayer.class = new GuildHall.Valkyrie();
+        newPlayer = new GuildHall.Valkyrie();
       } else if (setClass === 'Berserker') {
-        newPlayer.class = new GuildHall.Berserker();
+        newPlayer = new GuildHall.Berserker();
       } else if (setClass === 'Monk') {
-        newPlayer.class = new GuildHall.Monk();
+        newPlayer = new GuildHall.Monk();
       } else if (setClass === 'Shaman') {
-        newPlayer.class = new GuildHall.Shaman();        
+        newPlayer = new GuildHall.Shaman();        
       } else if (setClass === 'Wizard') {
-        newPlayer.class = new GuildHall.Wizard();
+        newPlayer = new GuildHall.Wizard();
       } else if (setClass === 'Sorcerer') {
-        newPlayer.class = new GuildHall.Sorcerer();
+        newPlayer = new GuildHall.Sorcerer();
       } else if (setClass === 'Conjurer') {
-        newPlayer.class = new GuildHall.Conjurer();
+        newPlayer = new GuildHall.Conjurer();
       } else if (setClass === 'Thief') {
-        newPlayer.class = new GuildHall.Thief();
+        newPlayer = new GuildHall.Thief();
       } else if (setClass === 'Ninja') {
-        newPlayer.class = new GuildHall.Ninja();
+        newPlayer = new GuildHall.Ninja();
       } else if (setClass === 'Assassin') {
-        newPlayer.class = new GuildHall.Assassin();
+        newPlayer = new GuildHall.Assassin();
       } else if (setClass === 'surpriseme') {
         newPlayer.generateClass();
       } else {
         console.log('createPlayer: No Class Set - Should not happen');
-        newPlayer.class = 'noClass';
+        newPlayer = 'noClass';
       }
       // console.log('startGame: Player has Class Attached');
 
       if (setWeapon === 'Dagger' ) {
-        newPlayer.setWeapon(new Tools.Dagger());
+        newPlayer.weapon = new Tools.Dagger();
       } else if (setWeapon === 'BroadSword') {
-        newPlayer.setWeapon(new Tools.BroadSword());
+        newPlayer.weapon = new Tools.BroadSword();
       } else if (setWeapon === 'BattleAxe') {
-        newPlayer.setWeapon(new Tools.BattleAxe());
+        newPlayer.weapon = new Tools.BattleAxe();
       } else if (setWeapon === 'BrassKnuckles') {
-        newPlayer.setWeapon(new Tools.BrassKnuckles());
+        newPlayer.weapon = new Tools.BrassKnuckles();
       } else if (setWeapon === 'Pike') {
-        newPlayer.setWeapon(new Tools.Pike());
+        newPlayer.weapon = new Tools.Pike();
       } else if (setWeapon === 'Rapier') {
-        newPlayer.setWeapon(new Tools.Rapier());
+        newPlayer.weapon = new Tools.Rapier();
       } else if (setWeapon === 'WarHammer') {
-        newPlayer.setWeapon(new Tools.WarHammer());
+        newPlayer.weapon = new Tools.WarHammer();
       } else if (setWeapon === 'BearHands') {
-        newPlayer.setWeapon(new Tools.BearHands());
+        newPlayer.weapon = new Tools.BearHands();
       } else if (setWeapon === 'Shuriken') {
-        newPlayer.setWeapon(new Tools.Shuriken());
+        newPlayer.weapon = new Tools.Shuriken();
       } else if (setWeapon === 'Sphere') {
-        newPlayer.setWeapon(new Spell.Sphere());
+        newPlayer.weapon = new Spell.Sphere();
       } else if (setWeapon === 'BadLarry') {
-        newPlayer.setWeapon(new Spell.BadLarry());
+        newPlayer.weapon = new Spell.BadLarry();
       } else if (setWeapon === 'FreakyFriday') {
-        newPlayer.setWeapon(new Spell.FreakyFriday());
+        newPlayer.weapon = new Spell.FreakyFriday();
       } else if (setWeapon === 'HeebyJeebs') {
-        newPlayer.setWeapon(new Spell.HeebyJeebs());
+        newPlayer.weapon = new Spell.HeebyJeebs();
       } else if (setWeapon === 'StartledMingus') {
-        newPlayer.setWeapon(new Spell.StartledMingus());
+        newPlayer.weapon = new Spell.StartledMingus();
       } else if (setWeapon === 'GlasgowKiss') {
-        newPlayer.setWeapon(new Spell.GlasgowKiss());
+        newPlayer.weapon = new Spell.GlasgowKiss();
       } else {
         console.log('createPlayer: No Weapon Set - Should not happen');
         newPlayer.weapon = 'noWeapon';
